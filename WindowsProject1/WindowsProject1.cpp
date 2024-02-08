@@ -14,28 +14,21 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
 
-//Координаты фигуры
-//double tree[15][3] = { {700,100,1},
-//                        {600,200,1 },
-//                        {800,200,1 },
-//                        {700,300,1},
-//                        {500,500,1 },
-//                        {700,500,1},
-//                        {800,500,1},
-//    {400,800,1},
-//    {1000,800,1},
-//    {700,700,1},
-//    {300,1100,1},
-//    {1100,1100,1},
-//    {700,1300,1},
-//    {600,1300,1},
-//    {700,1300,1 }
-//    /*{700,300,1},
-//    {500,500,1 },
-//    {700,500,1},
-//    {800,500,1},
-//    {400,800,1 }*/ };
-
+double tree[15][3] = { {140,20,1},
+                                {120,40,1 },
+                                {160,40,1 },
+                        {140,60,1},
+                        {100,100,1 },
+                        {140,100,1},
+                        {180,100,1},
+{200,160,1},
+    {80,160,1},
+    {140,140,1},
+    {60,220,1},
+    {220,220,1},
+    {140,260,1},
+    {120,260,1},
+    {160,260,1 } };
 
 double current_tree[15][3] = { {140,20,1},
                                 {120,40,1 },
@@ -68,24 +61,11 @@ double ScaleMatrix[3][3] = { {4, 0, 0},
 
 
 
-//double RotateMatrix[3][3] = { {cos(1.22), -sin(1.22),0},                                              //перевод в радианы
-//                               {sin(1.22), cos(1.22), 0},
-//                            {  0,0,  1} };
 
-
-//double RotateMatrix[3][3] = { {1, 0, 0},                                              //перевод в радианы
-//                               { 0, cos(1.22), -sin(1.22)},
-//                            { 0, sin(1.22), cos(1.22)} };
-
-
-double RotateMatrix[3][3] = { {1, 0, 0},                                              //перевод в радианы
-                               { cos(1.22), sin(1.22), 0},
-                       { 0, -sin(1.22), cos(1.22)} };
-
-//double RotateMatrix[3][3] = {                                              //перевод в радианы
-//                               { cos(1.22), sin(1.22), 0},
-//                            {  -sin(1.22), cos(1.22),0} ,
-//{ 200, 0,1 }, };
+double RotateMatrix[3][3] = {                                              //перевод в радианы
+                               { -cos(1.22), sin(1.22), 0},
+                            {  sin(1.22), cos(1.22),0} ,
+{ 50, 0,1 }, };
 
 
 //double RotateMatrix[3][3] = { {cos(1.22), 0,  -sin(1.22)},
@@ -103,7 +83,7 @@ void MultMatrix(double AffinMatrix[3][3]) {
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 3; j++) {
-                tmp += AffinMatrix[j][i]* current_tree[k][j] ;
+                tmp += AffinMatrix[j][i]* tree[k][j] ;
             }
 
             current_tree[k][i] = tmp;
@@ -113,6 +93,16 @@ void MultMatrix(double AffinMatrix[3][3]) {
 
     return;
 }
+
+void FunctionStart() {
+    for (int i = 0; i < 15; i++) {
+        for (int j = 0; j < 3; j++) {
+            current_tree[i][j] = tree[i][j];
+        }
+    }
+    return;
+}
+
 
 
 
@@ -246,6 +236,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         case IDM_EXIT:
             DestroyWindow(hWnd);
+            break;
+
+        case IDM_START:
+            FunctionStart();
+            InvalidateRect(hWnd, NULL, TRUE);
+            UpdateWindow(hWnd);
             break;
 
         case IDM_MOVE:

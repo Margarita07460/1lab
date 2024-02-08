@@ -1,1 +1,2 @@
 C:\Users\Маргарита\Desktop\WindowsProject1\x64\Debug\WindowsProject1.exe
+C:\Users\Маргарита\Desktop\lab1\1lab\WindowsProject1\x64\Debug\WindowsProject1.exe

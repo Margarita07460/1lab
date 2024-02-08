@@ -6,6 +6,7 @@
 #define IDM_MOVE                        50
 #define IDM_SCALE                       51
 #define IDM_ROTATE                      52
+#define IDM_START						53
 #define IDD_WINDOWSPROJECT1_DIALOG      102
 #define IDS_APP_TITLE                   103
 #define IDD_ABOUTBOX                    103
