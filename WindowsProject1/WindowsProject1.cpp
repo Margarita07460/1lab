@@ -14,37 +14,46 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
 
-double tree[15][3] = { {140,20,1},
-                                {120,40,1 },
-                                {160,40,1 },
-                        {140,60,1},
-                        {100,100,1 },
-                        {140,100,1},
-                        {180,100,1},
-{200,160,1},
-    {80,160,1},
-    {140,140,1},
-    {60,220,1},
-    {220,220,1},
-    {140,260,1},
-    {120,260,1},
-    {160,260,1 } };
+double tree[15][3] = { {140, 20, 1},
+                                {140, 260, 1},
+                                {120, 260, 1},
+                                {160, 260, 1},
 
-double current_tree[15][3] = { {140,20,1},
-                                {120,40,1 },
-                                {160,40,1 },
-                        {140,60,1},
-                        {100,100,1 },
-                        {140,100,1},
-                        {180,100,1},
-{200,160,1},
-    {80,160,1},
-    {140,140,1},
-    {60,220,1},
-    {220,220,1},
-    {140,260,1},
-    {120,260,1},
-    {160,260,1 } };
+                                {120, 40, 1},
+                                {160, 40, 1},
+
+                                {100, 100, 1},
+                                {140, 60, 1},
+                                {180, 100, 1},
+
+                                {80, 160, 1},
+                                {140, 100, 1},
+                                {200, 160, 1},
+
+                                {60, 220, 1},
+                                {140, 140, 1},
+                                {220 ,220, 1}, };
+
+double current_tree[15][3] = { {140, 20, 1},
+                                {140, 260, 1},
+                                {120, 260, 1},
+                                {160, 260, 1},
+
+                                {120, 40, 1},
+                                {160, 40, 1},
+
+                                {100, 100, 1},
+                                {140, 60, 1},
+                                {180, 100, 1},
+
+                                {80, 160, 1},
+                                {140, 100, 1},
+                                {200, 160, 1},
+
+                                {60, 220, 1},
+                                {140, 140, 1},
+                                {220 ,220, 1}, };
+
 
 //Матрицы аффинных преобразований
 
@@ -277,39 +286,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
         // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
 
-        MoveToEx(hdc, current_tree[1][0], current_tree[1][1], 0);
-        LineTo(hdc, current_tree[0][0], current_tree[0][1]);
-        LineTo(hdc, current_tree[2][0], current_tree[2][1]);
-        MoveToEx(hdc, current_tree[0][0], current_tree[0][1], 0);
-        LineTo(hdc, current_tree[3][0], current_tree[3][1]);
-        LineTo(hdc, current_tree[4][0], current_tree[4][1]);
-        MoveToEx(hdc, current_tree[3][0], current_tree[3][1], 0);
-        LineTo(hdc, current_tree[6][0], current_tree[6][1]);
-        MoveToEx(hdc, current_tree[3][0], current_tree[3][1], 0);
-        LineTo(hdc, current_tree[5][0], current_tree[5][1]);
-        LineTo(hdc, current_tree[7][0], current_tree[7][1]);
-        MoveToEx(hdc, current_tree[5][0], current_tree[5][1], 0);
-        LineTo(hdc, current_tree[9][0], current_tree[9][1]);
-        MoveToEx(hdc, current_tree[5][0], current_tree[5][1], 0);
-        LineTo(hdc, current_tree[8][0], current_tree[8][1]);
-        MoveToEx(hdc, current_tree[9][0], current_tree[9][1], 0);
-        LineTo(hdc, current_tree[10][0], current_tree[10][1]);
-        MoveToEx(hdc, current_tree[9][0], current_tree[9][1], 0);
-        LineTo(hdc, current_tree[11][0], current_tree[11][1]);
-        MoveToEx(hdc, current_tree[9][0], current_tree[9][1], 0);
-        LineTo(hdc, current_tree[12][0], current_tree[12][1]);
-        LineTo(hdc, current_tree[13][0], current_tree[13][1]);
-        LineTo(hdc, current_tree[14][0], current_tree[14][1]);
 
+
+        MoveToEx(hdc, current_tree[0][0], current_tree[0][1], 0);
+        LineTo(hdc, current_tree[1][0], current_tree[1][1]);
+        MoveToEx(hdc, current_tree[2][0], current_tree[2][1], 0);
+        LineTo(hdc, current_tree[3][0], current_tree[3][1]);
+       
+        
+        MoveToEx(hdc, current_tree[4][0], current_tree[4][1], 0);
+        LineTo(hdc, current_tree[0][0], current_tree[0][1]);
+        LineTo(hdc, current_tree[5][0], current_tree[5][1]);
+
+        for (int i = 6; i < 16; i += 3) {
+            MoveToEx(hdc, current_tree[i][0], current_tree[i][1], 0);
+            LineTo(hdc, current_tree[i+1][0], current_tree[i+1][1]);
+            LineTo(hdc, current_tree[i + 2][0], current_tree[i + 2][1]);
+        }
+       
 
        
        // MoveToEx(hdc, current_tree[3][0], current_tree[3][1], 0);
        
         EndPaint(hWnd, &ps);
 
-        /*{700, 100, 1},
-        { 600,200,1 },
-        { 800,200,1 }, };*/
     }
     break;
     case WM_DESTROY:
