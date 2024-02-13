@@ -72,9 +72,9 @@ double ScaleMatrix[3][3] = { {4, 0, 0},
 
 
 double RotateMatrix[3][3] = {                                              //перевод в радианы
-                               { -cos(1.22), sin(1.22), 0},
-                            {  sin(1.22), cos(1.22),0} ,
-{ 50, 0,1 }, };
+                               { cos(1.22), sin(1.22), 0},
+                            {  -sin(1.22), cos(1.22),0} ,
+                            { 50, 0,1 }, };
 
 
 //double RotateMatrix[3][3] = { {cos(1.22), 0,  -sin(1.22)},
@@ -92,7 +92,7 @@ void MultMatrix(double AffinMatrix[3][3]) {
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 3; j++) {
-                tmp += AffinMatrix[j][i]* tree[k][j] ;
+                tmp += AffinMatrix[j][i]* current_tree[k][j] ;
             }
 
             current_tree[k][i] = tmp;
