@@ -1,0 +1,4 @@
+C:\Users\Маргарита\Desktop\WindowsProject1\x64\Debug\WindowsProject1.exe
+D:\ПГУ. Учебные пособия\4 семестр\Компьютерная группа и 3D моделирование\laboratory_work\1lab-main\WindowsProject1\x64\Debug\WindowsProject1.exe
+D:\ПГУ. Учебные пособия\4 семестр\Компьютерная группа и 3D моделирование\laboratory_work\WindowsProject1_new\x64\Debug\WindowsProject1.exe
+C:\Users\Маргарита\Desktop\3d\semester_4\WindowsProject1_new\x64\Debug\WindowsProject1.exe
